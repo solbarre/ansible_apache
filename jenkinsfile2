@@ -6,8 +6,8 @@ node {
       ansiblePlaybook(
         colorized: true,
         become: true,		
-        playbook: 'playbook.yml',
-        inventory: inventories
+        playbook: 'playbook.yaml',
+        inventory: 'hosts.yaml',
         credentialsId: 'jenkins-root-key',
         hostKeyChecking: false,
         extras: '-e username=' + username
