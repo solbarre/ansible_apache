@@ -3,7 +3,7 @@ node {
         git branch: 'main', url: 'https://github.com/solbarre/ansible_apache.git'
     }
     stage('Ansible') {
-    ansiblePlaybook(
+      ansiblePlaybook(
         colorized: true,
         become: true,		
         playbook: 'playbook.yml',
@@ -11,7 +11,8 @@ node {
         credentialsId: 'jenkins-root-key',
         hostKeyChecking: false,
         extras: '-e username=' + username
-    )
+      )
+	}
     stage('clearout') {
         deleteDir()
     }
