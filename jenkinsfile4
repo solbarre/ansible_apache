@@ -8,9 +8,14 @@ pipeline {
     stages {
        stage('install ansible') {
 	     steps{
-           sh """
-              ansible-playbook -i hosts.yaml playbook.yaml
-           """
+		    script {
+                env.DEFAULT_LOCAL_TMP = env.WORKSPACE_TMP
+                env.HOME = env.WORKSPACE
+
+                sh """
+                   ansible-playbook -i hosts.yaml playbook.yaml
+                """
+			}
 		 }
        }
               
