@@ -13,12 +13,6 @@ pipeline {
            """
 		 }
        }
-       stage('lance playbook') {
-	     steps{
-           sh """
-		     sudo ls -l	         
-	       """
-		 }
-       }               
+              
     }
 }     
