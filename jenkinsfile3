@@ -16,7 +16,7 @@ pipeline {
        stage('lance playbook') {
 	     steps{
            sh """
-		     ls -l	         
+		     sudo ls -l	         
 	       """
 		 }
        }               
