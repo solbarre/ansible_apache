@@ -4,6 +4,9 @@ pipeline {
             filename 'dockerfile'
         }
     }
+	environment {
+       ANSIBLE_PRIVATE_KEY=credentials('jenkins') 
+    }
 
     stages {
        stage('install ansible') {
@@ -13,7 +16,7 @@ pipeline {
                 env.HOME = env.WORKSPACE
 
                 sh """
-                   ansible-playbook -i hosts.yaml playbook.yaml
+                   ansible-playbook -i hosts.yaml --private-key=$ANSIBLE_PRIVATE_KEY playbook.yaml
                 """
 			}
 		 }
