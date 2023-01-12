@@ -1,5 +1,5 @@
 node {
-    stage('downloading')  {   
+    stage('downloading')  {  	
         git branch: 'master', url: 'https://github.com/solbarre/ansible_apache.git'
     }
 	stage('ansible') {

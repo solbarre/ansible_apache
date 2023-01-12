@@ -1,0 +1,18 @@
+pipeline {
+    agent {
+        dockerfile {
+            filename 'dockerfile'
+        }
+    }
+
+    stages {
+       stage('install ansible') {
+	     steps{
+           sh """
+              ansible-playbook -i hosts.yaml playbook.yaml
+           """
+		 }
+       }
+              
+    }
+}     
