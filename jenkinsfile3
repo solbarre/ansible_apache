@@ -1,0 +1,19 @@
+pipeline {
+    agent {
+        docker {
+           image 'python:3-alpine'
+        }
+    }
+    stages {
+       stage('install ansible') {
+          sh """
+	         apk add ansible
+          """
+       }
+       stage('lance playbook pour chargement variables') {
+         sh """
+	        ansible-playbook -i hosts.yaml playbook.yaml
+	     """
+       }               
+    }
+}     

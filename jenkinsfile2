@@ -1,0 +1,17 @@
+node {
+    stage('downloading')  {   
+        git branch: 'master', url: 'https://github.com/solbarre/ansible_apache.git'
+    }
+    stage('Ansible') {
+    ansiblePlaybook(
+        colorized: true,
+        become: true,		
+        playbook: 'playbook.yml',
+        inventory: inventories
+        credentialsId: 'jenkins-root-key',
+        hostKeyChecking: false,
+        extras: '-e username=' + username
+    )
+    stage('clearout') {
+        deleteDir()
+    }
