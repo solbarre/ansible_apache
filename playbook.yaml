@@ -1,4 +1,4 @@
-- hosts: webserver
+- hosts: web
   become: yes
   tasks:
     - name: verif presence apache
