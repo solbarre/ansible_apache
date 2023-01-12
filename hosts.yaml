@@ -2,6 +2,6 @@
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
 [webserver]
-web ansible_ssh_host=ec2-13-39-84-48.eu-west-3.compute.amazonaws.com ansible_ssh_port=22 ansible_user=jenkins
+web ansible_ssh_host=ec2-13-38-89-29.eu-west-3.compute.amazonaws.com ansible_ssh_port=22 ansible_user=jenkins
 
 
