@@ -13,8 +13,10 @@ pipeline {
            """
 		 }
        }
-	   stage('downloading')  {   
-           git branch: 'master', url: 'https://github.com/solbarre/ansible_apache.git'
+	   stage('downloading')  {
+          steps{	   
+            git branch: 'master', url: 'https://github.com/solbarre/ansible_apache.git'
+		  }
        }
        stage('lance playbook') {
 	     steps{
