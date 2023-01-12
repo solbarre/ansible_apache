@@ -16,8 +16,7 @@ pipeline {
        stage('lance playbook') {
 	     steps{
            sh """
-		     ls -l
-	         ansible-playbook -i hosts.yaml playbook.yaml
+		     ls -l	         
 	       """
 		 }
        }               
