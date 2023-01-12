@@ -10,7 +10,6 @@ node {
         inventory: 'hosts.yaml',
         credentialsId: 'jenkins-root-key',
         hostKeyChecking: false,
-        extras: '-e username=' + username
       )
 	}
     stage('clearout') {
