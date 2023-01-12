@@ -6,14 +6,18 @@ pipeline {
     }
     stages {
        stage('install ansible') {
-          sh """
+	     steps{
+           sh """
 	         apk add ansible
-          """
+           """
+		 }
        }
        stage('lance playbook pour chargement variables') {
-         sh """
-	        ansible-playbook -i hosts.yaml playbook.yaml
-	     """
+	     steps{
+           sh """
+	         ansible-playbook -i hosts.yaml playbook.yaml
+	       """
+		 }
        }               
     }
 }     
