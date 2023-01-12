@@ -1,6 +1,6 @@
 node {
     stage('downloading')  {   
-        git branch: 'master', url: 'https://github.com/solbarre/ansible_apache.git'
+        git branch: 'main', url: 'https://github.com/solbarre/ansible_apache.git'
     }
     stage('Ansible') {
     ansiblePlaybook(
@@ -15,3 +15,4 @@ node {
     stage('clearout') {
         deleteDir()
     }
+}
