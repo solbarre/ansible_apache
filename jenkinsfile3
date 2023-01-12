@@ -1,14 +1,14 @@
 pipeline {
     agent {
         docker {
-           image 'python:3-alpine'
+           image 'python:3.8-slim-buster'
         }
     }
     stages {
        stage('install ansible') {
 	     steps{
            sh """
-	         apk add ansible
+	         apt install ansible
            """
 		 }
        }
