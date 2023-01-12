@@ -1,5 +1,4 @@
 - hosts: web
-  become: yes
   tasks:
     - name: verif presence apache
       package:
