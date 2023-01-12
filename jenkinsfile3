@@ -13,7 +13,10 @@ pipeline {
            """
 		 }
        }
-       stage('lance playbook pour chargement variables') {
+	   stage('downloading')  {   
+           git branch: 'master', url: 'https://github.com/solbarre/ansible_apache.git'
+       }
+       stage('lance playbook') {
 	     steps{
            sh """
 	         ansible-playbook -i hosts.yaml playbook.yaml
