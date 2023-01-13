@@ -1,3 +1,3 @@
 FROM python:3-alpine
-RUN apk add ansible 
-RUN apk add python3
+RUN apk add ansible
+RUN apk add openssh-client
