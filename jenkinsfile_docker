@@ -16,9 +16,6 @@ pipeline {
                 env.HOME = env.WORKSPACE
 
                 sh """
-				   id
-				   cat /etc/group
-				   cat /etc/passwd
                    ansible-playbook -i hosts.yaml --private-key=$ANSIBLE_PRIVATE_KEY -u jenkins playbook.yaml
                 """
 			}
