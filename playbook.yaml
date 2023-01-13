@@ -13,6 +13,6 @@
         mode: 0644
     - name: démarrage apache
       service:
-        name: "{{ webserver_package_name }}"
+        name: "apache"
         state: started
         enabled: yes
