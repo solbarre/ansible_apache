@@ -4,32 +4,8 @@
   <meta charset="utf-8">
   <title>Bonjour ansible</title>
 </head>
-<body id="home" style="color: {{ webserver_color }}">
+<body id="home" style="color: blue">
 <h1>Bonjour Ansible</h1>
-<h2>{{ ansible_hostname }}</h2>
-  <table><tr>
-  <td><b>ip</b></td><td> : {{ ansible_default_ipv4.address }}</td></tr>
-  <tr>
-  <td><b>memory</b></td><td> : {{ ansible_memory_mb.real.total }}Mo</td></tr>
-  </table>
-  <b>points de montage :</b><br>
-  <ul>
-      {% for mp in ansible_mounts %}
-       <li>{{ mp.mount }} ({{ mp.size_total | filesizeformat }})</li>
-       {% endfor %}
-  </ul>
-  <b>Donnees ipv4 :</b><br>
-  <ul>
-      {% for info, valeur in ansible_default_ipv4.items() %}
-       <li>{{ info }} : {{ valeur }}</li>
-       {% endfor %}
-  </ul>
-  <b>Packages installees</b><br>
-  <ul>
-      {% for info in bootstrap_packages %}
-       <li>{{ info }}</li>
-       {% endfor %}
-       <li>{{ webserver_color }}</li>
-  </ul>
+
 </body>
 </html>
