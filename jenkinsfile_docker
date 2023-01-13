@@ -1,4 +1,4 @@
-pipeline {
+node {
     agent {
         dockerfile {
             filename 'dockerfile'
@@ -7,16 +7,10 @@ pipeline {
 	environment {
        ANSIBLE_PRIVATE_KEY=credentials('jenkins-root-key') 
     }
-    stages {
-       stage('ansible') {
-	     steps{
-		    script {
+    stage('ansible') {
                 sh """
                    ansible-playbook -i hosts.yaml --private-key=$ANSIBLE_PRIVATE_KEY -u jenkins playbook.yaml
                 """
-			}
-		 }
-       }
               
     }
 }     
