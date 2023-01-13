@@ -7,14 +7,10 @@ pipeline {
 	environment {
        ANSIBLE_PRIVATE_KEY=credentials('jenkins-root-key') 
     }
-
     stages {
-       stage('install ansible') {
+       stage('ansible') {
 	     steps{
 		    script {
-                env.DEFAULT_LOCAL_TMP = env.WORKSPACE_TMP
-                env.HOME = env.WORKSPACE
-
                 sh """
                    ansible-playbook -i hosts.yaml --private-key=$ANSIBLE_PRIVATE_KEY -u jenkins playbook.yaml
                 """
