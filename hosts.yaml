@@ -2,6 +2,6 @@
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
 [webserver]
-web ansible_ssh_host=ec2-52-47-164-59.eu-west-3.compute.amazonaws.com
+web ansible_ssh_host=ec2-34-244-238-124.eu-west-1.compute.amazonaws.com
 
 
