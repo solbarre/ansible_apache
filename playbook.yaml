@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: web
   tasks:
     - name: verif presence apache
       package:
