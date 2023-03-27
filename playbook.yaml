@@ -1,59 +1,32 @@
-##################################################
-# DO Community Playbooks: Apache on Ubuntu 18.04
-##################################################
----
-- hosts: all
-  become: true
-  vars_files:
-    - vars/default.yml
-
+- hosts: web
   tasks:
-    - name: Install prerequisites
-      apt: name={{ item }} update_cache=yes state=latest force_apt_get=yes
-      loop: [ 'aptitude' ]
-
-    - name: Install Apache
-      apt: name=apache2 update_cache=yes state=latest
-
-    - name: Create document root
-      file:
-        path: "/var/www/{{ http_host }}"
-        state: directory
-        owner: "{{ app_user }}"
-        mode: '0755'
-
-    - name: Copy index test page
-      template:
-        src: "files/index.html.j2"
-        dest: "/var/www/{{ http_host }}/index.html"
-
-    - name: Set up Apache virtualhost
-      template:
-        src: "files/apache.conf.j2"
-        dest: "/etc/apache2/sites-available/{{ http_conf }}"
-
-    - name: Enable new site
-      shell: /usr/sbin/a2ensite {{ http_conf }}
-      notify: Reload Apache
-
-    - name: Disable default Apache site
-      shell: /usr/sbin/a2dissite 000-default.conf
-      when: disable_default
-      notify: Reload Apache
-
-    - name: "UFW - Allow HTTP on port {{ http_port }}"
-      ufw:
-        rule: allow
-        port: "{{ http_port }}"
-        proto: tcp
-
-  handlers:
-    - name: Reload Apache
-      service:
+    - name: verif presence apache
+      package:
         name: apache2
-        state: reloaded
-
-    - name: Restart Apache
+        state: present
+    - name: ajout page index.html
+      template:
+        dest: /var/www/html/index.html
+        src: index.html
+        owner: root
+        group: root
+        mode: 0644
+    - name: maj page 000-default.conf
+      template:
+        dest: /etc/apache2/sites-available/000-default.conf
+        src: site.conf
+        owner: root
+        group: root
+        mode: 0644
+    - name: maj port 8080 listen
+      template:
+        dest: /etc/apache2/ports.conf
+        src: ports.conf
+        owner: root
+        group: root
+        mode: 0644
+    - name: démarrage apache
       service:
-        name: apache2
-        state: restarted
+        name: "apache2"
+        state: started
+        enabled: yes
