@@ -1,0 +1,25 @@
+- hosts: web
+  tasks:
+    - name: verif presence apache
+      package:
+        name: apache2
+        state: present
+    - name: ajout page index.html
+      template:
+        dest: /var/www/html/index.html
+        src: index.html
+        owner: root
+        group: root
+        mode: 0644
+    - name: ajout page index.html
+      template:
+        dest: /etc/apache2/sites-available/000-default.conf
+        src: site.conf
+        owner: root
+        group: root
+        mode: 0644
+    - name: démarrage apache
+      service:
+        name: "apache2"
+        state: started
+        enabled: yes
