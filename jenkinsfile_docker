@@ -1,4 +1,7 @@
 pipeline {
+    option {
+	   buildDiscarder(logRotator(numToKeepStr: '4', artifactNumToKeepStr: '4'))
+    }
     agent {
         dockerfile {
             filename 'dockerfile'
