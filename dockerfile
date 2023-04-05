@@ -5,5 +5,5 @@ RUN adduser -D jenkins
 RUN mkdir /.ansible
 RUN mkdir /.ansible/cp
 RUN chmod -R 1777 /.ansible
-RUN chown jenkins:jenkins /var/lib/workspace
+RUN chown -r jenkins:jenkins /.ansible
 USER jenkins
