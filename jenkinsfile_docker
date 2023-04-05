@@ -10,6 +10,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/solbarre/ansible_apache.git'
 				sh 'ls -ld /tmp'
 				sh 'pwd'
+				sh 'mkdir /.ansible'
 				sh 'id'
                 ansiblePlaybook(
                     colorized: true,
