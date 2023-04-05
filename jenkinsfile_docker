@@ -4,19 +4,21 @@ pipeline {
             filename 'dockerfile'
         }
     }
-	environment {
-       ANSIBLE_PRIVATE_KEY=credentials('jenkins-root-key') 
-    }
     stages {
-       stage('ansible') {
-	     steps{
-		    script {
-                sh """
-                   ansible-playbook -i hosts.yaml --private-key=$ANSIBLE_PRIVATE_KEY -u ubuntu playbook.yaml
-                """
-			}
-		 }
-       }
+        stage('downloading')  { 
+            steps{
+                git branch: 'main', url: 'https://github.com/solbarre/ansible_apache.git'
+                ansiblePlaybook(
+                    colorized: true,
+                    become: true,		
+                    playbook: 'playbook.yaml',
+                    inventory: 'hosts.yaml',
+                    credentialsId: 'jenkins-root-key',
+                    hostKeyChecking: false,
+                )
+            }
+        }
               
     }
+
 }     
