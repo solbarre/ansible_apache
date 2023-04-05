@@ -12,7 +12,7 @@ pipeline {
 	     steps{
 		    script {
                 sh """
-                   ansible-playbook -i hosts.yaml --private-key=$ANSIBLE_PRIVATE_KEY -u jenkins playbook.yaml
+                   ansible-playbook -i hosts.yaml --private-key=$ANSIBLE_PRIVATE_KEY -u ubuntu playbook.yaml
                 """
 			}
 		 }

@@ -1,7 +1,0 @@
-ansiColor('xterm') {
-    ansiblePlaybook( 
-        playbook: 'playbook.yaml',
-        inventory: 'hosts.yaml', 
-        credentialsId: 'jenkins-root-key',
-        colorized: true) 
-}
