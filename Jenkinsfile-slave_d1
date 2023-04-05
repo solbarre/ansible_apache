@@ -1,9 +1,6 @@
 pipeline {
-    agent {
-        dockerfile {
-            filename 'dockerfile'
-        }
-    }
+    agent {label 'slave_d1'}
+
 	environment {
        ANSIBLE_PRIVATE_KEY=credentials('jenkins-root-key') 
     }
@@ -11,9 +8,6 @@ pipeline {
        stage('ansible') {
 	     steps{
 		    script {
-                env.DEFAULT_LOCAL_TMP = env.WORKSPACE_TMP
-                env.HOME = env.WORKSPACE
-
                 sh """
                    ansible-playbook -i hosts.yaml --private-key=$ANSIBLE_PRIVATE_KEY -u jenkins playbook.yaml
                 """
