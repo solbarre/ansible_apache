@@ -8,6 +8,7 @@ pipeline {
         stage('downloading')  { 
             steps{
                 git branch: 'main', url: 'https://github.com/solbarre/ansible_apache.git'
+				sh 'ls -ld /tmp'
                 ansiblePlaybook(
                     colorized: true,
                     become: true,		
