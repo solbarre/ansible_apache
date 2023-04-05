@@ -4,4 +4,4 @@ RUN apk add openssh-client
 RUN adduser -D jenkins
 RUN chmod 1777 /tmp
 WORKDIR /tmp
-USER jenkins
+USER ubuntu
